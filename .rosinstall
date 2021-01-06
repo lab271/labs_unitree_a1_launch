@@ -1,0 +1,10 @@
+# IT IS UNLIKELY YOU WANT TO EDIT THIS FILE BY HAND,
+# UNLESS FOR REMOVING ENTRIES.
+# IF YOU WANT TO CHANGE THE ROS ENVIRONMENT VARIABLES
+# USE THE rosinstall TOOL INSTEAD.
+# IF YOU CHANGE IT, USE rosinstall FOR THE CHANGES TO TAKE EFFECT
+- git: {local-name: ../unitree_legged_sdk, uri: 'https://github.com/unitreerobotics/unitree_legged_sdk.git', version: caae7c4c86f6c08c5f4a5260a7cded0137a44383}
+- git: {local-name: ../aliengo_sdk, uri: 'https://github.com/unitreerobotics/aliengo_sdk.git', version: 583cc616828c23580c691aa0c16aff6b9447ef73}
+- git: {local-name: ../unitree_legged_base_controller, uri: 'https://github.com/lab271/unitree_legged_base_controller.git', version: main}
+- git: {local-name: ../slamware_sdk, uri: 'https://github.com/lab271/slamware_sdk.git', version: main}
+- git: {local-name: ../slamware_ros_sdk, uri: 'https://github.com/lab271/slamware_ros_sdk.git', version: main}
