@@ -32,6 +32,7 @@
   <depend>eigen</depend>
   <depend>unitree_legged_base_controller</depend>
   <depend>geometry_msgs</depend>
+  <depend>map_server</depend>
 
 
 

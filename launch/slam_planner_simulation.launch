@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="labs_unitree_a1_launch" type="labs_unitree_a1_launch_node" respawn="false" name="labs_unitree_a1_launch_node" output="screen" clear_params="true"> 
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen" clear_params="true"> 
     <rosparam file="$(find labs_unitree_a1_launch)/params/costmap_common_params.yaml"       command="load"  ns="global_costmap" />
     <rosparam file="$(find labs_unitree_a1_launch)/params/costmap_common_params.yaml"       command="load"  ns="local_costmap" />
     <rosparam file="$(find labs_unitree_a1_launch)/params/local_costmap_params.yaml"        command="load" />
