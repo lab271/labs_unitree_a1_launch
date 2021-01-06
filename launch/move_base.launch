@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="move_base" type="move_base" name="labs_unitree_a1_move_base">
+		
+	</node>
+
+</launch>

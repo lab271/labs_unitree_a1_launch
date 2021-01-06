@@ -1,0 +1,22 @@
+<launch>
+    <include file="$(find unitree_a1_base)/launch/slam_rplidar_start.launch" />
+
+    <node pkg="move_base" type="move_base" respawn="false" name="unitree_a1_base_node" output="screen" clear_params="true"> 
+        <rosparam file="$(find unitree_a1_base)/params/costmap_common_params.yaml"       command="load"  ns="global_costmap" />
+        <rosparam file="$(find unitree_a1_base)/params/costmap_common_params.yaml"       command="load"  ns="local_costmap" />
+	    <rosparam file="$(find unitree_a1_base)/params/local_costmap_params.yaml"        command="load" />
+        <rosparam file="$(find unitree_a1_base)/params/global_costmap_params.yaml"       command="load" />
+
+        <rosparam file="$(find unitree_a1_base)/params/base_local_planner_params.yaml"   command="load" />
+        <rosparam file="$(find unitree_a1_base)/params/nav_obstacles_params.yaml"        command="load" />
+
+        <!--rosparam file="$(find unitree_a1_base)/params/move_base_params.yaml"   command="load" /-->
+        <!--rosparam file="$(find unitree_a1_base)/params/dwa_local_planner_params.yaml"        command="load" /-->
+       	<!--rosparam file="$(find unitree_a1_base)/params/global_planner_params.yaml" command="load" /-->
+    	<!--rosparam file="$(find unitree_a1_base)/params/navfn_global_planner_params.yaml" command="load" /--> 
+    </node>
+
+    <!--node pkg="rviz"  type="rviz"  name="rviz" args="-d $(find unitree_a1_base)/cfg/unitree_a1_base_online.rviz" required="true"/-->
+    
+    <!-- <node pkg="unitree_a1_base"  type="base_controller_node"  name="base_controller_node" /> -->
+</launch>

@@ -1,0 +1,37 @@
+<launch>
+    <include file="$(find labs_unitree_a1_launch)/launch/slam_rplidar_start.launch" />
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"> 
+        <rosparam file="$(find labs_unitree_a1_launch)/params/costmap_common_params.yaml"       command="load"  ns="global_costmap" />
+        <rosparam file="$(find labs_unitree_a1_launch)/params/costmap_common_params.yaml"       command="load"  ns="local_costmap" />
+	    <rosparam file="$(find labs_unitree_a1_launch)/params/local_costmap_params.yaml"        command="load" />
+        <rosparam file="$(find labs_unitree_a1_launch)/params/global_costmap_params.yaml"       command="load" />
+
+        <rosparam file="$(find labs_unitree_a1_launch)/params/base_local_planner_params.yaml"   command="load" />
+        <rosparam file="$(find labs_unitree_a1_launch)/params/nav_obstacles_params.yaml"        command="load" />
+
+        <!--rosparam file="$(find labs_unitree_a1_launch)/params/move_base_params.yaml"   command="load" /-->
+        <!--rosparam file="$(find labs_unitree_a1_launch)/params/dwa_local_planner_params.yaml"        command="load" /-->
+       	<!--rosparam file="$(find labs_unitree_a1_launch)/params/global_planner_params.yaml" command="load" /-->
+    	<!--rosparam file="$(find labs_unitree_a1_launch)/params/navfn_global_planner_params.yaml" command="load" /--> 
+    </node>
+
+    <!--node pkg="rviz"  type="rviz"  name="rviz" args="-d $(find labs_unitree_a1_launch)/cfg/unitree_a1_base_online.rviz" required="true"/-->
+    
+    <!-- <node pkg="unitree_a1_base"  type="base_controller_node"  name="base_controller_node" /> -->
+
+    <arg name="rname" default="a1"/>
+    <arg name="ctrl_level" default="highlevel"/>
+    <arg name="firmwork" default="3_2"/>
+
+    <node pkg="unitree_legged_base_controller" type="lcm_server_$(arg firmwork)" name="node_lcm_server"
+          respawn="false" output="screen" args="$(arg rname) $(arg ctrl_level)" />
+
+    <param name="robot_name" value="$(arg rname)"/>
+    <param name="control_level" value="$(arg ctrl_level)"/>
+    <param name="firmwork" value="$(arg firmwork)"/>
+
+     <node pkg="unitree_legged_base_controller" type="unitree_legged_base_controller" name="unitree_legged_base_controller"
+          respawn="false" output="screen" args="$(arg rname) $(arg ctrl_level)" />
+
+</launch>
